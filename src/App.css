@@ -1,0 +1,26 @@
+body {
+  font-size: calc(10px + 2vmin);
+  padding: 0 2em;
+}
+.menuProduct {
+  display: flex;
+  flex-direction: row;
+}
+.menuProduct div {
+  flex: 1;
+  padding-top: 0.6em;
+}
+.favorite {
+  font-weight: bold;
+  color: red;
+}
+.productSize {
+  font-size: 0.6em;
+  color: blue;
+  text-decoration: underline;
+}
+.note {
+  color: #a21212;
+  font-size: smaller;
+}
+
