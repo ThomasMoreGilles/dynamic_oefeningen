@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
+    "normalize.css": "^8.0.1",
     "react-scripts": "^5.0.1"
   }
 }
