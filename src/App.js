@@ -3,13 +3,24 @@ import 'normalize.css';
 import MenuCardPage from './pages/MenuCardPage';
 import PicturesPage from './pages/PicturesPage';
 import { PRODUCTS_DATA } from './data/data';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
 function App() {
     return (
-        <>
-            <MenuCardPage products={PRODUCTS_DATA} />
-            <PicturesPage />
-        </>
+        <Tabs>
+            <TabList>
+                <Tab>menu</Tab>
+                <Tab>pics</Tab>
+            </TabList>
+
+            <TabPanel>
+                <MenuCardPage products={PRODUCTS_DATA} />
+            </TabPanel>
+            <TabPanel>
+                <PicturesPage />
+            </TabPanel>
+        </Tabs>
     );
 }
 
