@@ -18,7 +18,7 @@ export function MenuProduct(props) {
             <div>{product.name}
                 <ProductSize product={product} />
             </div>
-            <div>{product.price} €</div>
+            <div>&euro; {product.price}</div>
         </div>
         <ProductNote product={product} />
     </container>

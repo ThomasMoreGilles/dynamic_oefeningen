@@ -5,6 +5,7 @@ import PicturesPage from './pages/PicturesPage';
 import { PRODUCTS_DATA } from './data/data';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
     return (
