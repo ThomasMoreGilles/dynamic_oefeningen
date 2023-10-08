@@ -1,11 +1,9 @@
-import React from 'react';
-import { MenuCard } from '../components/MenuCard';
-import { PRODUCTS_DATA } from '../data/data';
+import {MenuCard} from "../components/MenuCard";
 
-function MenuCardPage() {
-  return (
-    <MenuCard products={PRODUCTS_DATA} />
-  );
+export function MenuCardPage(props) {
+    const { products } = props;
+
+    return (
+        <MenuCard products={products} initOpen={true} />
+    );
 }
-
-export default MenuCardPage;

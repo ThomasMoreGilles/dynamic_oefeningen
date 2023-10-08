@@ -1,18 +1,20 @@
-import { Container, Row, Col } from 'react-bootstrap';
-import { MenuProduct } from './MenuProduct';
+import {MenuProduct} from "./MenuProduct";
+import PropTypes from "prop-types";
+import {Container} from "react-bootstrap";
+
+MenuCard.propTypes = {
+    products: PropTypes.arrayOf(PropTypes.object).isRequired
+}
 
 export function MenuCard(props) {
     const { products } = props;
+
     return (
-        <Container>
+        <div>
             <h1>Menu</h1>
-            <Row>
-                {products.map((p, key) => (
-                    <Col md={4} key={'p' + key}>
-                        <MenuProduct product={p} />
-                    </Col>
-                ))}
-            </Row>
-        </Container>
+            <Container className="p-0">
+                {products.map(p => <MenuProduct key={p.name} product={p}/>)}
+            </Container>
+        </div>
     );
 }
