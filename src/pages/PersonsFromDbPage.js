@@ -12,6 +12,7 @@ import { Persons } from "../components/Persons";
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import { MyButton } from "../components/MyButton";
+import { PersonFormEdit } from "../components/PersonFormEdit";
 
 const personConverter = {
   toFirestore: function (dataInApp) {
@@ -71,6 +72,20 @@ export function PersonsFromDbPage() {
     }
   }
 
+  function editPerson(person) {
+    setPersonSelected(person);
+
+    console.log(`edit person ${person.name}`);
+  }
+  const [personSelected, setPersonSelected] = useState(undefined);
+async function editPersonSave(personToEdit) {
+    try {
+        await updateDoc(personToEdit.ref, {name: personToEdit.name, age: personToEdit.age, city: personToEdit.city});
+        console.log(`update person ${personToEdit.name} done`);
+    } catch (e) {
+        console.log(`ERROR update person ${personToEdit.name} NOT done correctly: ${e}`);
+    }
+}
   return (
     <div className="mx-3">
       <Form>
@@ -89,7 +104,15 @@ export function PersonsFromDbPage() {
         persons={values?.filter((p) => p.name.includes(search))}
         isInitiallyOpen={true}
         onDeletePerson={deletePerson}
+        onEditPerson={editPerson}
       />
+      {personSelected && (
+        <PersonFormEdit
+          person={personSelected}
+          onSavePerson={editPersonSave}
+          onHide={() => setPersonSelected(undefined)}
+        />
+      )}
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { Col } from "react-bootstrap";
 import { MyCard } from "./MyCard";
 
 function Person(props) {
-  const { person, onDeletePerson } = props;
+  const { person, onDeletePerson, onEditPerson } = props;
   return (
     <Col xs={6} sm={4} md={3} lg={2}>
       <MyCard title={person.name}>
@@ -13,10 +13,16 @@ function Person(props) {
         {onDeletePerson && (
           <div className="border-top align-items-center p-2">
             <button
-              className="btn btn-primary"
+              className="btn btn-primary me-2"
               onClick={() => onDeletePerson(person)}
             >
               delete
+            </button>
+            <button
+              className="btn btn-primary me-2"
+              onClick={() => onEditPerson(person)}
+            >
+              edit
             </button>
           </div>
         )}
