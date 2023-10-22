@@ -1,27 +1,50 @@
-import {MyCard} from "./MyCard";
-import {Element} from "./Element";
-import {Section} from "./Section";
-import PropTypes from "prop-types";
+import { Section } from "./Section";
+import * as PropTypes from "prop-types";
+import { Col } from "react-bootstrap";
+import { MyCard } from "./MyCard";
 
 function Person(props) {
-    const { person } = props;
-
-    return <MyCard title={person.name}>
-        <h5>{person.name}</h5>
-        <Element value={person.age} />
-        <Element value={person.city} />
-    </MyCard>;
+  const { person, onDeletePerson } = props;
+  return (
+    <Col xs={6} sm={4} md={3} lg={2}>
+      <MyCard title={person.name}>
+        <div>{person.age}</div>
+        <div>{person.city}</div>
+        {onDeletePerson && (
+          <div className="border-top align-items-center p-2">
+            <button
+              className="btn btn-primary"
+              onClick={() => onDeletePerson(person)}
+            >
+              delete
+            </button>
+          </div>
+        )}
+      </MyCard>
+    </Col>
+  );
 }
 
+Person.propTypes = {
+  person: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    age: PropTypes.number.isRequired,
+    city: PropTypes.string.isRequired,
+  }),
+};
+
 export function Persons(props) {
-    const {persons, title, initOpen, search} = props
-    const searchedPersons = persons.filter(p => p.name.includes(search) || p.city.includes(search));
-    return <Section title={title} initOpen={initOpen} >
-        {searchedPersons.map(p => <Person key={p.id} person={p} />)}
-    </Section>;
+  const { persons, title, isInitiallyOpen, onDeletePerson } = props;
+  return (
+    <Section title={title} isInitiallyOpen={isInitiallyOpen}>
+      {persons?.map((p) => (
+        <Person key={p.id} person={p} onDeletePerson={onDeletePerson} />
+      ))}
+    </Section>
+  );
 }
 
 Persons.propTypes = {
-    persons: PropTypes.arrayOf(PropTypes.object),
-    title: PropTypes.string
+  persons: PropTypes.array,
+  title: PropTypes.string,
 };

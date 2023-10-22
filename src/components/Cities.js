@@ -1,25 +1,37 @@
-import {MyCard} from "./MyCard";
-import {Element} from "./Element";
-import {Section} from "./Section";
 import PropTypes from "prop-types";
+import {Col} from "react-bootstrap";
+import {Section} from "./Section";
+import {MyCard} from "./MyCard";
 
 function City(props) {
-    const { city } = props;
+    const {city} = props;
+    return (
+        <Col xs={12} sm={6} md={4} lg={3} xl={2}>
+            <MyCard title={city.name}>
+                {city.numberOfPersons}
+            </MyCard>
+        </Col>
+    );
+}
 
-    return <MyCard title={city.name}>
-        <h5>{city.name}</h5>
-        <Element value={city.numberOfPersons} />
-    </MyCard>;
+City.propTypes = {
+    city: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        numberOfPersons: PropTypes.number.isRequired,
+    })
 }
 
 export function Cities(props) {
-    const {cities, title, initOpen} = props
-    return <Section title={title} initOpen={initOpen} >
-        {cities.map(c => <City key={c.name} city={c} />)}
-    </Section>;
+    const {cities, title, isInitiallyOpen} = props
+    return (
+        <Section title={title} isInitiallyOpen={isInitiallyOpen}>
+            {cities.map(c => <City key={c.name} city={c}/>)}
+        </Section>
+    );
 }
 
 Cities.propTypes = {
-    cities: PropTypes.arrayOf(PropTypes.object),
+    cities: PropTypes.array,
     title: PropTypes.string
 };
+

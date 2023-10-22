@@ -5,7 +5,7 @@ export function CarsPage(props) {
 
     return (
         <div className="mx-3" >
-            <Cars cars={cars} title="Auto's" initOpen={true} />
+            <Cars cars={cars} title="Auto's" isInitiallyOpen={true}/>
         </div>
     );
 }
