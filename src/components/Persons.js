@@ -2,6 +2,7 @@ import { Section } from "./Section";
 import * as PropTypes from "prop-types";
 import { Col } from "react-bootstrap";
 import { MyCard } from "./MyCard";
+import { MdEdit, MdDelete } from "react-icons/md";
 
 function Person(props) {
   const { person, onDeletePerson, onEditPerson } = props;
@@ -12,18 +13,18 @@ function Person(props) {
         <div>{person.city}</div>
         {onDeletePerson && (
           <div className="border-top align-items-center p-2">
-            <button
-              className="btn btn-primary me-2"
+            <div
+              className="border border-primary rounded text-primary p-2 mx-auto"
               onClick={() => onDeletePerson(person)}
             >
-              delete
-            </button>
-            <button
-              className="btn btn-primary me-2"
+              <MdDelete />
+            </div>
+            <div
+              className="border border-primary rounded text-primary p-2 mx-auto"
               onClick={() => onEditPerson(person)}
             >
-              edit
-            </button>
+              <MdEdit />
+            </div>
           </div>
         )}
       </MyCard>
