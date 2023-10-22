@@ -78,14 +78,20 @@ export function PersonsFromDbPage() {
     console.log(`edit person ${person.name}`);
   }
   const [personSelected, setPersonSelected] = useState(undefined);
-async function editPersonSave(personToEdit) {
+  async function editPersonSave(personToEdit) {
     try {
-        await updateDoc(personToEdit.ref, {name: personToEdit.name, age: personToEdit.age, city: personToEdit.city});
-        console.log(`update person ${personToEdit.name} done`);
+      await updateDoc(personToEdit.ref, {
+        name: personToEdit.name,
+        age: personToEdit.age,
+        city: personToEdit.city,
+      });
+      console.log(`update person ${personToEdit.name} done`);
     } catch (e) {
-        console.log(`ERROR update person ${personToEdit.name} NOT done correctly: ${e}`);
+      console.log(
+        `ERROR update person ${personToEdit.name} NOT done correctly: ${e}`
+      );
     }
-}
+  }
   return (
     <div className="mx-3">
       <Form>

@@ -3,12 +3,17 @@ import * as PropTypes from "prop-types";
 import { Col } from "react-bootstrap";
 import { MyCard } from "./MyCard";
 import { MdEdit, MdDelete } from "react-icons/md";
+import { Avatar } from "boring-avatars";
 
 function Person(props) {
   const { person, onDeletePerson, onEditPerson } = props;
   return (
     <Col xs={6} sm={4} md={3} lg={2}>
       <MyCard title={person.name}>
+        {/* <Avatar
+          name={person.name}
+          colors={["#A3A948", "#EDB92E", "#F85931", "#CE1836", "#009989"]}
+        /> */}
         <div>{person.age}</div>
         <div>{person.city}</div>
         {onDeletePerson && (

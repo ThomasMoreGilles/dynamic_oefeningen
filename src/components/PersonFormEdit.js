@@ -1,3 +1,4 @@
+import Avatar from "boring-avatars";
 import React, { useState } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 
@@ -12,7 +13,13 @@ export function PersonFormEdit({ person, onSavePerson, onHide }) {
   return (
     <Modal show={true} onHide={onHide}>
       <Modal.Header closeButton>
-        <Modal.Title>Edit Person</Modal.Title>
+        <Modal.Title>
+          <Avatar
+            name={personToEdit.name}
+            colors={["#A3A948", "#EDB92E", "#F85931", "#CE1836", "#009989"]}
+          />
+          Edit Person
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
